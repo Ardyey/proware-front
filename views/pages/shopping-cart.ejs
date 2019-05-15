@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Proware Shopping Cart</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="shortcut icon" href="assets/img/Owner.png" />
+</head>
+
+<body>
+    <%- include('../partials/_navbar.html') %>
+    <%- include('../partials/_modal.html') %>
+    <main class="page shopping-cart-page">
+        <section class="clean-block clean-cart dark">
+            <div class="container">
+                <%- include('../partials/_heading.html') %>
+                <div class="content">
+                    <div class="row no-gutters">
+                        <div class="col-md-12 col-lg-8">
+                            <div class="items">
+                                <% if(cart_items != "Cart is Empty!"){ %>
+                                <% cart_items.forEach((item) => { %>
+                                <div class="product">
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-md-2">
+                                            <div class="product-image img-responsive"><img class="img-fluid d-block mx-auto image" src="images/product/<%= item.image%>"></div>
+                                        </div>
+                                        <div class="col-md-7 product-info"><a href="#" class="product-name">Description:&nbsp;<%=item.item_description%></a>
+                                            <div class="product-specs">
+                                                <div><span>Category:&nbsp;</span><span><%=item.type%></span></div>
+                                                <div><span>Item Code:&nbsp;</span><span><%=item.item_code%></span></div>
+                                                <div><span>Current Stock:&nbsp;</span><span class='stock'><%=item.stock%></span></div>
+                                                <div><span>Price:&nbsp;</span><span><b>Php&nbsp;<span class="itemPrice" id="<%=item.item_code%>"><%=item.unit_price%></span></b></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-2 quantity">
+                                            <label>Quantity</label>
+                                            <input type="number" value="<%=item.quantity%>" name="<%=item.item_code%>" class="number form-control quantity-input" min="1" max="10" maxlength="2" onfocus="this.select()" onkeyup="if(this.value > 10) this.value = 10;">
+                                        </div>
+                                        <div class="col-6 col-md-2">
+                                            <button type="button" name="<%=item.item_code%>" class="deleteBtn btn btn-danger">Delete Item</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <% })%>
+                                <%} else {%>
+                                <div class="product">
+                                    <div class="col-md-12 pt-5">
+                                           <p class="text-center font-weight-bold text-danger display-4">Cart is Empty!</p>
+                                        </div>
+                                </div>
+                                <%}%>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4">
+                            <div class="summary">
+                                <h3>Summary</h3>
+                                <!-- <h4><span class="text">Subtotal</span><span class="price">360.00</span></h4> -->
+                                <!-- <h4><span class="text">Vat 12%: </span><span class="price">0</span></h4> -->
+                                <!-- <h4><span class="text">Shipping</span><span class="price">$0</span></h4> -->
+                                <h4><span class="text">Total:<span class="price"><strong>Php&nbsp;<span id="totalPrice"></strong></span></span></h4>
+                                <% if(cart_items != "Cart is Empty!"){ %>
+                                <a class="btn btn-primary btn-block btn-lg" role="button" id="attributeWhite" href="/checkout">Checkout</a>
+                                <%} else {%>
+                                <a class="btn btn-danger btn-block btn-lg disabled" role="button" id="attributeWhite" href="/checkout">Checkout</a>    
+                                <%}%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('../partials/_footer.html') %>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/addons.js"></script>
+    <script src="scripts/cart.js"></script>
+</body>
+
+</html>

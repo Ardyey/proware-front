@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Proware Products</title>
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="shortcut icon" href="assets/img/Owner.png" />
+
+</head>
+
+<body>
+    <%- include('../../partials/_navbar.html')%>
+    <main class="page catalog-page">
+        <section class="clean-block clean-catalog dark">
+            <div class="container">
+                <%- include('../../partials/_heading.html') %>
+                <div class="content">
+                    <div class="row">
+                        <%- include('../../partials/_category.html')%>
+                        <div class="col-md-9">
+                            <div class="products">
+                                <h3 class="col-md-9">All Products</h3>
+                                <div class="row no-gutters">
+                                    <% product.forEach( (product) =>  {%>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <div class="clean-product-item">
+                                            <div class="image"><img class="img-fluid d-block mx-auto" src="/images/product/<%=product.image%>"></div>
+                                            <div class="product-name"><%=product.item_description%><p hidden><%=product.item_code%></p>
+                                            </div>
+                                            <div class="about">
+                                                <div class="price">
+                                                    <h3>Php <%=product.price%></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% })%>
+                                </div>
+                                <nav>
+                                    <% if (pageCount > 1) { %>
+                                    <ul class="pagination justify-content-center">
+                                        <% if (currentPage > 1) { %>
+                                        <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                                        <% } %>
+                                        <% let i = 1;
+                                          if (currentPage > 4) {
+                                          i = +currentPage - 3;
+                                          } %>
+                                        <% if (i !== 1) { %>
+                                        <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                                        <% } %>
+                                        <% for (i; i<=pageCount; i++) { %>
+                                        <% if (currentPage == i) { %>
+                                        <li class="page-item active"><a class="page-link" href="#"><%= i %></a></li>
+                                        <% } else { %>
+                                        <li class="page-item"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+                                        <% } %>
+                                        <% if (i == (+currentPage + 3)) { %>
+                                        <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                                        <% break; } %>
+                                        <% } %>
+                                        <% if (currentPage != pageCount) { %>
+                                        <li class="page-item"><a class="page-link" href="?page=<%= pageCount %>">Last</a></li>
+                                        <% } %>
+                                    </ul>
+                                    <% } %>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('../../partials/_footer.html')%>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/addons.js"></script>
+</body>
+
+</html>

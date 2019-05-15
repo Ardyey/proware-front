@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Students Login</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/loading.css" />
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <link rel="stylesheet" type="text/css" href="assets/css/loading.css" />
+  <!-- inject:css -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- endinject -->
+  <link rel="shortcut icon" href="assets/img/Owner.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth">
+        <div class="row w-100">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left p-5">
+              <h4>Students</h4>
+              <h6 class="font-weight-light">Sign in to continue.</h6>
+              <form class="pt-3">
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" id="studentId" placeholder="Student ID" maxlength="11">
+                </div>
+                <div class="mt-3">
+                  <a style="color: white" class="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn" id="signinButton">SIGN IN</a>
+                </div>
+                <div class="mt-2">
+                  <p class="card-description">NOT YET REGISTERED? <a href="/signup">Click Here!</a></p>
+                </div>
+                <div class="mt-3" id="creds" hidden>
+                  <p class="text-center text-danger">Invalid Student ID or Student is not yet registered!</p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <div class='spinner' hidden>
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="vendors/js/vendor.bundle.addons.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="assets/js/off-canvas.js"></script>
+  <script src="assets/js/misc.js"></script>
+  <!-- endinject -->
+
+  <script src="scripts/login.js"></script>
+</body>
+
+</html>

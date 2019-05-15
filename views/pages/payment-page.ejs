@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Proware Payment</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="shortcut icon" href="assets/img/Owner.png" />
+</head>
+
+<body>
+    <%- include('../partials/_navbar.html') %>
+    <main class="page payment-page">
+        <section class="clean-block payment-form dark">
+            <div class="container">
+                <%- include('../partials/_heading.html') %>
+                <form>
+                    <div class="products">
+                        <h3 class="title">Checkout</h3>
+                        <% cart_items.forEach((item) => {%>
+                        <div class="item">
+                            <span class="price">Php&nbsp;<%=item.sub_total%></span>
+                            <p class="item-name"><%=item.item_description%></p>
+                            <p class="item-description">Item Code:&nbsp;<%=item.item_code%></p>
+                            <p class="item-description">Qty: <%=item.quantity%> pc(s)</p>
+                        </div>
+
+                        <%})%>
+                        <div class="total"><span>Total</span><span class="price">Php&nbsp;<%=total_price%></span></div>
+                        <div class="card-details">
+                            <a class="btn btn-primary btn-block" id="attributeWhite" href="/payment_final">Proceed</a>
+                            <a class="btn btn-danger btn-block" id="attributeWhite" href="/cart">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <%- include('../partials/_footer.html') %>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
