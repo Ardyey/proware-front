@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 signinValidation = () => {
 	spinner.removeAttribute('hidden');
-	fetch('http://localhost:3002/auth', {
+	fetch('https://tranquil-forest-40707.herokuapp.com//auth', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json'

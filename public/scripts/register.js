@@ -11,7 +11,7 @@ const warning = document.querySelector('#warning');
 
 signupValidation = () => {
 	spinner.removeAttribute('hidden');
-	fetch('http://localhost:3002/register', {
+	fetch('https://tranquil-forest-40707.herokuapp.com//register', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json'
