@@ -11,7 +11,7 @@ $(document).ready(function() {
 })
 
 const getPrice = () => {
-	fetch('https://tranquil-forest-40707.herokuapp.com//total_price.json')
+	fetch(https://tranquil-forest-40707.herokuapp.com/total_price.json')
 		.then(response => response.json())
 		.then(price => {
 			if (price) {
@@ -21,7 +21,7 @@ const getPrice = () => {
 }
 
 const changeQuantity = () => {
-	fetch('https://tranquil-forest-40707.herokuapp.com//cart_cquantity', {
+	fetch(https://tranquil-forest-40707.herokuapp.com/cart_cquantity', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ const buttonIndentifier = (e) => {
 }
 
 const deleteItem = () => {
-	fetch('https://tranquil-forest-40707.herokuapp.com//delete_citem', {
+	fetch(https://tranquil-forest-40707.herokuapp.com/delete_citem', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json'

@@ -56,7 +56,7 @@ const quantityHandler = () => {
 const addItem = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('itemCode');
-    fetch('https://tranquil-forest-40707.herokuapp.com//add_citem', {
+    fetch(https://tranquil-forest-40707.herokuapp.com/add_citem', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
