@@ -126,6 +126,7 @@ const uniformList = (req, res, db) => {
 					id: req.session.student_id
 				});
 				return;
+			}
 			else {
 				res.render('pages/product/all', {
 					product: productList,
