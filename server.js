@@ -100,19 +100,6 @@ app.use(session({
   store: store
 }));
 
-
-//http proxy middleware options
-for (route of routes) {
-    app.use(route.route,
-        proxy({
-            target: route.address,
-            pathRewrite: (path, req) => {
-                return path.split('/').slice(2).join('/'); 
-            }
-        })
-    );
-}
-
 const checkSignIn = (req, res, next) => {
    if(req.session.user){
         next();     //If session exists, proceed to page
@@ -133,6 +120,19 @@ app.get('/signout', (req, res) => {
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.use(cors());
+
+
+//http proxy middleware options
+for (route of routes) {
+    app.use(route.route,
+        proxy({
+            target: route.address,
+            pathRewrite: (path, req) => {
+                return path.split('/').slice(2).join('/'); 
+            }
+        })
+    );
+}
 
 app.set('view engine', 'ejs');
 
