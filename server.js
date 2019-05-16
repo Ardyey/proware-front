@@ -13,7 +13,7 @@ const proxy = require('http-proxy-middleware');
 const { createLogger, format, transports } = require('winston');
 require('winston-daily-rotate-file');
 const logDir = 'log';
-
+const KnexSessionStore = require('connect-session-knex')(session);
 const env = process.env.NODE_ENV || 'development';
 
 // Create the log directory if it does not exist
@@ -77,6 +77,12 @@ const db = knex({
   }
 });
 
+const store = new KnexSessionStore({
+    knex: db,
+    createtable: true
+});
+
+
 app.use(express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
@@ -89,17 +95,13 @@ app.use(session({
   name: 'front_session',
 	secret: 'front_secret',
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: false,
+  cookie: {
+    maxAge: 43200000
+  },
+  store: store
 }));
 
-// {
-//   "routes": [
-//     {
-//       "route": "/images", <--the address that will be called
-//       "address": "http://localhost:3000/" <--the original address of the source that will be replaced
-//     }
-//   ]
-// }
 
 //http proxy middleware options
 for (route of routes) {
