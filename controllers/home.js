@@ -23,7 +23,6 @@ const bookList = (req, res, db, logger) => {
 				productList = productArrays[+currentPage - 1];
 
 				res.render('pages/product/book', {
-					// id: req.session.user.id, 
 					product: productList,
 					pageSize: pageSize,
 					totalProduct: totalProduct,
@@ -33,7 +32,10 @@ const bookList = (req, res, db, logger) => {
 				});
 				return;
 			} else {
-				res.render('pages/error-500');
+				res.render('pages/product/all', {
+					product: productList,
+					id: req.session.student_id
+				});
 				return;
 			}
 		}).catch(err => {
@@ -68,12 +70,18 @@ const prowareList = (req, res, db) => {
 				productList = productArrays[+currentPage - 1];
 
 				res.render('pages/product/proware', {
-					// id: req.session.user.id, 
 					product: productList,
 					pageSize: pageSize,
 					totalProduct: totalProduct,
 					pageCount: pageCount,
 					currentPage: currentPage,
+					id: req.session.student_id
+				});
+				return;
+			}
+			else {
+				res.render('pages/product/all', {
+					product: productList,
 					id: req.session.student_id
 				});
 				return;
@@ -110,7 +118,6 @@ const uniformList = (req, res, db) => {
 				productList = productArrays[+currentPage - 1];
 
 				res.render('pages/product/uniform', {
-					// id: req.session.user.id, 
 					product: productList,
 					pageSize: pageSize,
 					totalProduct: totalProduct,
@@ -119,8 +126,11 @@ const uniformList = (req, res, db) => {
 					id: req.session.student_id
 				});
 				return;
-			} else {
-				res.render('pages/error-500');
+			else {
+				res.render('pages/product/all', {
+					product: productList,
+					id: req.session.student_id
+				});
 				return;
 			}
 		}).catch(err => {
@@ -154,7 +164,6 @@ const allList = (req, res, db) => {
 				productList = productArrays[+currentPage - 1];
 
 				res.render('pages/product/all', {
-					// id: req.session.user.id, 
 					product: productList,
 					pageSize: pageSize,
 					totalProduct: totalProduct,
@@ -164,7 +173,10 @@ const allList = (req, res, db) => {
 				});
 				return;
 			} else {
-				res.render('pages/error-500');
+				res.render('pages/product/all', {
+					product: productList,
+					id: req.session.student_id
+				});
 				return;
 			}
 		}).catch(err => {
@@ -197,7 +209,6 @@ const searchList = (req, res, db) => {
 
 				productList = productArrays[+currentPage - 1];
 				res.render('pages/product/search', {
-					// id: req.session.user.id, 
 					product: productList,
 					pageSize: pageSize,
 					totalProduct: totalProduct,
