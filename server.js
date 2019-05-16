@@ -13,7 +13,6 @@ const proxy = require('http-proxy-middleware');
 const { createLogger, format, transports } = require('winston');
 require('winston-daily-rotate-file');
 const logDir = 'log';
-const port = 3002;
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -210,6 +209,6 @@ app.get('/view_items', checkSignIn, (req, res) => {
 
 app.get('/orders.json', checkSignIn, (req, res) => search.getOrders(req, res, db, logger));
 app.get('/items.json', checkSignIn, (req, res) => search.viewItems(req, res, db, logger));
-server.listen(3002,() => {
-  console.log("Live at Port 3002");
+server.listen(process.env.PORT || 3002,() => {
+  console.log(`Live at Port ${process.env.PORT}`);
 });
