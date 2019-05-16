@@ -2,7 +2,7 @@
   "routes": [
     {
       "route": "/images",
-      "address": "http://localhost:3000/proware/images" 
+      "address": "https://young-fjord-50496.herokuapp.com/proware/images" 
     }
   ]
 }
