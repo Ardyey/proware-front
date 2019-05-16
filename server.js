@@ -83,10 +83,9 @@ const store = new KnexSessionStore({
 
 app.use(express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/bower_components'));
-app.use(express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/views'));
-app.use(express.static('https://tranquil-forest-40707.herokuapp.com' + '/public'));
 
 //Change this on deployment
 app.use(session({
