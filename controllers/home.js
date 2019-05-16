@@ -33,7 +33,6 @@ const bookList = (req, res, db, logger) => {
 				return;
 			} else {
 				res.render('pages/product/all', {
-					product: productList,
 					id: req.session.student_id
 				});
 				return;
@@ -81,7 +80,6 @@ const prowareList = (req, res, db) => {
 			}
 			else {
 				res.render('pages/product/all', {
-					product: productList,
 					id: req.session.student_id
 				});
 				return;
@@ -129,7 +127,6 @@ const uniformList = (req, res, db) => {
 			}
 			else {
 				res.render('pages/product/all', {
-					product: productList,
 					id: req.session.student_id
 				});
 				return;
@@ -175,7 +172,6 @@ const allList = (req, res, db) => {
 				return;
 			} else {
 				res.render('pages/product/all', {
-					product: productList,
 					id: req.session.student_id
 				});
 				return;
