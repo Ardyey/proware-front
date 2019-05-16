@@ -1,3 +1,5 @@
+process.env.PWD = process.cwd();
+
 const express = require("express");
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -81,11 +83,12 @@ const store = new KnexSessionStore({
 });
 
 
-app.use(express.static(__dirname + '/node_modules'));
-app.use(express.static(__dirname + '/bower_components'));
-app.use('/', express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/assets'));
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(process.env.PWD + '/node_modules'));
+app.use(express.static(process.env.PWD + '/bower_components'));
+app.use(express.static(process.env.PWD + '/public'));
+app.use(express.static(process.env.PWD + '/assets'));
+app.use(express.static(process.env.PWD + '/views'));
+app.use(express.static('https://tranquil-forest-40707.herokuapp.com' + '/public'));
 
 //Change this on deployment
 app.use(session({
